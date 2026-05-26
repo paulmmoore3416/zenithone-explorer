@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - ZenithOne Explorer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    
+    <style>
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .tabs {
+            display: flex;
+            gap: var(--spacing-md);
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .tab {
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s ease;
+        }
+        
+        .tab:hover {
+            color: var(--text-primary);
+        }
+        
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+        
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        
+        .settings-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+        }
+        
+        .settings-card-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .settings-card-description {
+            color: var(--text-tertiary);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span class="logo-text">ZenithOne</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="workloads.html" class="nav-link">
+                        <i class="fas fa-tasks"></i>
+                        <span>Workloads</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="containers.html" class="nav-link">
+                        <i class="fas fa-box"></i>
+                        <span>Containers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="subsystems.html" class="nav-link">
+                        <i class="fas fa-server"></i>
+                        <span>Subsystems</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="metrics.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Metrics</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="admin.html" class="nav-link">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Administration</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <span class="user-name" id="userName">Admin User</span>
+                    <span class="user-role" id="userRole">Administrator</span>
+                </div>
+            </div>
+            <button class="btn-logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Administration</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." id="searchInput">
+                </div>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="btn-icon" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Content -->
+        <div class="content-wrapper">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h2>System Administration</h2>
+                    <p style="color: var(--text-tertiary); margin: 0;">Manage users, settings, and system configuration</p>
+                </div>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" data-tab="users">
+                    <i class="fas fa-users"></i> Users
+                </button>
+                <button class="tab" data-tab="settings">
+                    <i class="fas fa-cog"></i> Settings
+                </button>
+                <button class="tab" data-tab="system">
+                    <i class="fas fa-server"></i> System Info
+                </button>
+            </div>
+            
+            <!-- Users Tab -->
+            <div class="tab-content active" id="usersTab">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                    <h3>User Management</h3>
+                    <button class="btn btn-primary" id="createUserBtn">
+                        <i class="fas fa-plus"></i>
+                        Create User
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 2rem;">
+                                    <div class="spinner spinner-lg"></div>
+                                    <p style="margin-top: 1rem; color: var(--text-tertiary);">Loading users...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Settings Tab -->
+            <div class="tab-content" id="settingsTab">
+                <h3 style="margin-bottom: var(--spacing-xl);">System Settings</h3>
+                
+                <div class="settings-grid">
+                    <!-- General Settings -->
+                    <div class="settings-card">
+                        <h4 class="settings-card-title">General</h4>
+                        <p class="settings-card-description">Configure general system settings</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label">System Name</label>
+                            <input type="text" class="form-input" id="systemName" value="ZenithOne Explorer">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Time Zone</label>
+                            <select class="form-select" id="timeZone">
+                                <option value="UTC">UTC</option>
+                                <option value="America/New_York">Eastern Time</option>
+                                <option value="America/Chicago" selected>Central Time</option>
+                                <option value="America/Denver">Mountain Time</option>
+                                <option value="America/Los_Angeles">Pacific Time</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-sm">Save Changes</button>
+                    </div>
+                    
+                    <!-- Security Settings -->
+                    <div class="settings-card">
+                        <h4 class="settings-card-title">Security</h4>
+                        <p class="settings-card-description">Configure security and authentication</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Session Timeout (minutes)</label>
+                            <input type="number" class="form-input" id="sessionTimeout" value="60" min="5">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Password Policy</label>
+                            <select class="form-select" id="passwordPolicy">
+                                <option value="weak">Weak (6+ characters)</option>
+                                <option value="medium" selected>Medium (8+ characters, mixed case)</option>
+                                <option value="strong">Strong (12+ characters, mixed case, numbers, symbols)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-sm">Save Changes</button>
+                    </div>
+                    
+                    <!-- Performance Settings -->
+                    <div class="settings-card">
+                        <h4 class="settings-card-title">Performance</h4>
+                        <p class="settings-card-description">Configure performance and resource limits</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Max Concurrent Workloads</label>
+                            <input type="number" class="form-input" id="maxWorkloads" value="10" min="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Default CPU Limit (cores)</label>
+                            <input type="number" class="form-input" id="defaultCpu" value="2" step="0.1" min="0.1">
+                        </div>
+                        
+                        <button class="btn btn-primary btn-sm">Save Changes</button>
+                    </div>
+                    
+                    <!-- Monitoring Settings -->
+                    <div class="settings-card">
+                        <h4 class="settings-card-title">Monitoring</h4>
+                        <p class="settings-card-description">Configure monitoring and alerting</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Metrics Retention (days)</label>
+                            <input type="number" class="form-input" id="metricsRetention" value="30" min="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Alert Threshold (CPU %)</label>
+                            <input type="number" class="form-input" id="cpuThreshold" value="80" min="1" max="100">
+                        </div>
+                        
+                        <button class="btn btn-primary btn-sm">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Info Tab -->
+            <div class="tab-content" id="systemTab">
+                <h3 style="margin-bottom: var(--spacing-xl);">System Information</h3>
+                
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h4 class="settings-card-title">Platform</h4>
+                        <div class="form-group">
+                            <label class="form-label">Operating System</label>
+                            <p id="osInfo">Loading...</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Architecture</label>
+                            <p id="archInfo">Loading...</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Kernel Version</label>
+                            <p id="kernelInfo">Loading...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h4 class="settings-card-title">Application</h4>
+                        <div class="form-group">
+                            <label class="form-label">Version</label>
+                            <p>v1.0.0</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">API Version</label>
+                            <p>v1</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Uptime</label>
+                            <p id="uptimeInfo">Loading...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h4 class="settings-card-title">Resources</h4>
+                        <div class="form-group">
+                            <label class="form-label">CPU Cores</label>
+                            <p id="cpuCores">Loading...</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Total Memory</label>
+                            <p id="totalMemory">Loading...</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Disk Space</label>
+                            <p id="diskSpace">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Create User Modal -->
+    <div class="modal-overlay" id="createUserModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Create New User</h3>
+                <button class="modal-close" id="closeUserModalBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createUserForm">
+                    <div class="form-group">
+                        <label class="form-label">Username *</label>
+                        <input type="text" class="form-input" id="newUsername" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-input" id="newEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password *</label>
+                        <input type="password" class="form-input" id="newPassword" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Role *</label>
+                        <select class="form-select" id="newRole" required>
+                            <option value="user">User</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelUserModalBtn">Cancel</button>
+                <button class="btn btn-primary" id="submitUserBtn">Create User</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/admin.js"></script>
+</body>
+</html>

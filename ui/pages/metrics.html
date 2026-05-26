@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics - ZenithOne Explorer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    
+    <style>
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .time-range-selector {
+            display: flex;
+            gap: var(--spacing-sm);
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xs);
+        }
+        
+        .time-range-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: var(--font-size-sm);
+        }
+        
+        .time-range-btn:hover {
+            background-color: var(--bg-tertiary);
+        }
+        
+        .time-range-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .chart-container {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .chart-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+        }
+        
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+        
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .stat-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+        
+        .stat-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto var(--spacing-md);
+        }
+        
+        .stat-card-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .stat-card-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-tertiary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span class="logo-text">ZenithOne</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="workloads.html" class="nav-link">
+                        <i class="fas fa-tasks"></i>
+                        <span>Workloads</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="containers.html" class="nav-link">
+                        <i class="fas fa-box"></i>
+                        <span>Containers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="subsystems.html" class="nav-link">
+                        <i class="fas fa-server"></i>
+                        <span>Subsystems</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="metrics.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Metrics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.html" class="nav-link">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Administration</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <span class="user-name" id="userName">Admin User</span>
+                    <span class="user-role" id="userRole">Administrator</span>
+                </div>
+            </div>
+            <button class="btn-logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Metrics</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." id="searchInput">
+                </div>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="btn-icon" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Content -->
+        <div class="content-wrapper">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h2>System Metrics</h2>
+                    <p style="color: var(--text-tertiary); margin: 0;">Real-time performance monitoring</p>
+                </div>
+                <div style="display: flex; gap: var(--spacing-md); align-items: center;">
+                    <div class="time-range-selector">
+                        <button class="time-range-btn" data-range="1h">1H</button>
+                        <button class="time-range-btn" data-range="6h">6H</button>
+                        <button class="time-range-btn active" data-range="24h">24H</button>
+                        <button class="time-range-btn" data-range="7d">7D</button>
+                        <button class="time-range-btn" data-range="30d">30D</button>
+                    </div>
+                    <button class="btn btn-outline" id="refreshBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Stats Summary -->
+            <div class="stats-summary">
+                <div class="stat-card">
+                    <div class="stat-card-icon" style="background-color: rgba(59, 130, 246, 0.1); color: var(--primary-color);">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="stat-card-value" id="avgCpu">0%</div>
+                    <div class="stat-card-label">Avg CPU Usage</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card-icon" style="background-color: rgba(16, 185, 129, 0.1); color: var(--status-success);">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <div class="stat-card-value" id="avgMemory">0%</div>
+                    <div class="stat-card-label">Avg Memory Usage</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card-icon" style="background-color: rgba(245, 158, 11, 0.1); color: var(--status-warning);">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="stat-card-value" id="networkThroughput">0 MB/s</div>
+                    <div class="stat-card-label">Network Throughput</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card-icon" style="background-color: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <div class="stat-card-value" id="diskUsage">0%</div>
+                    <div class="stat-card-label">Disk Usage</div>
+                </div>
+            </div>
+            
+            <!-- Charts Grid -->
+            <div class="metrics-grid">
+                <!-- CPU Usage Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">CPU Usage</h3>
+                        <span class="badge badge-info">Real-time</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="cpuChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Memory Usage Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Memory Usage</h3>
+                        <span class="badge badge-info">Real-time</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="memoryChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Network Traffic Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Network Traffic</h3>
+                        <span class="badge badge-info">Real-time</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="networkChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Workload Distribution Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Workload Distribution</h3>
+                        <span class="badge badge-success">Active</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="workloadChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Scripts -->
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/metrics.js"></script>
+</body>
+</html>

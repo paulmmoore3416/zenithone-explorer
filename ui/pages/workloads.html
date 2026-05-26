@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workloads - ZenithOne Explorer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    
+    <style>
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .page-actions {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .filters-bar {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+            min-width: 200px;
+        }
+        
+        .workload-actions {
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span class="logo-text">ZenithOne</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="workloads.html" class="nav-link">
+                        <i class="fas fa-tasks"></i>
+                        <span>Workloads</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="containers.html" class="nav-link">
+                        <i class="fas fa-box"></i>
+                        <span>Containers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="subsystems.html" class="nav-link">
+                        <i class="fas fa-server"></i>
+                        <span>Subsystems</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="metrics.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Metrics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.html" class="nav-link">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Administration</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <span class="user-name" id="userName">Admin User</span>
+                    <span class="user-role" id="userRole">Administrator</span>
+                </div>
+            </div>
+            <button class="btn-logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Workloads</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search workloads..." id="searchInput">
+                </div>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="btn-icon" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Content -->
+        <div class="content-wrapper">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h2>Workload Management</h2>
+                    <p style="color: var(--text-tertiary); margin: 0;">Create, schedule, and monitor workloads</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-outline" id="refreshBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                    <button class="btn btn-primary" id="createWorkloadBtn">
+                        <i class="fas fa-plus"></i>
+                        Create Workload
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label class="form-label">Status</label>
+                    <select class="form-select" id="statusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="running">Running</option>
+                        <option value="completed">Completed</option>
+                        <option value="failed">Failed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="form-label">Type</label>
+                    <select class="form-select" id="typeFilter">
+                        <option value="">All Types</option>
+                        <option value="batch">Batch</option>
+                        <option value="interactive">Interactive</option>
+                        <option value="service">Service</option>
+                        <option value="scheduled">Scheduled</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="form-label">Priority</label>
+                    <select class="form-select" id="priorityFilter">
+                        <option value="">All Priorities</option>
+                        <option value="low">Low</option>
+                        <option value="normal">Normal</option>
+                        <option value="high">High</option>
+                        <option value="critical">Critical</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group" style="justify-content: flex-end;">
+                    <label class="form-label">&nbsp;</label>
+                    <button class="btn btn-outline" id="clearFiltersBtn">
+                        <i class="fas fa-times"></i>
+                        Clear Filters
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Workloads Table -->
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="workloadsTableBody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 2rem;">
+                                <div class="spinner spinner-lg"></div>
+                                <p style="margin-top: 1rem; color: var(--text-tertiary);">Loading workloads...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--spacing-lg);">
+                <div style="color: var(--text-tertiary); font-size: var(--font-size-sm);">
+                    Showing <span id="showingCount">0</span> of <span id="totalCount">0</span> workloads
+                </div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Create Workload Modal -->
+    <div class="modal-overlay" id="createWorkloadModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Create New Workload</h3>
+                <button class="modal-close" id="closeModalBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createWorkloadForm">
+                    <div class="form-group">
+                        <label class="form-label">Name *</label>
+                        <input type="text" class="form-input" id="workloadName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Type *</label>
+                        <select class="form-select" id="workloadType" required>
+                            <option value="batch">Batch</option>
+                            <option value="interactive">Interactive</option>
+                            <option value="service">Service</option>
+                            <option value="scheduled">Scheduled</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Container Image *</label>
+                        <input type="text" class="form-input" id="workloadImage" placeholder="e.g., python:3.14" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Command</label>
+                        <input type="text" class="form-input" id="workloadCommand" placeholder="e.g., python">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Priority</label>
+                        <select class="form-select" id="workloadPriority">
+                            <option value="low">Low</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="high">High</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">CPU Limit (cores)</label>
+                        <input type="number" class="form-input" id="workloadCpu" step="0.1" min="0.1" placeholder="e.g., 2">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Memory Limit (MB)</label>
+                        <input type="number" class="form-input" id="workloadMemory" min="128" placeholder="e.g., 1024">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelModalBtn">Cancel</button>
+                <button class="btn btn-primary" id="submitWorkloadBtn">Create Workload</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/workloads.js"></script>
+</body>
+</html>
