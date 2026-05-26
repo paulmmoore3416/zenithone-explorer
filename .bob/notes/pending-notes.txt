@@ -47,3 +47,6 @@
 {"id":"d451861a-0f98-4e1f-838f-0e6e6fc68b70","ts":"2026-05-26T22:36:01.990Z","path":"/home/paul/Documents/linuxonetproj/docs/CONFIGURATION.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
 {"id":"dca8547b-f39f-47b7-8f5a-618a85ad63a7","ts":"2026-05-26T22:37:03.218Z","path":"/home/paul/Documents/linuxonetproj/docs/API_REFERENCE.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
 {"id":"f47b941b-b09b-4502-8751-34844d4e2d48","ts":"2026-05-26T22:37:53.680Z","path":"/home/paul/Documents/linuxonetproj/docs/CLI_GUIDE.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"d1b00f37-ccc7-4bb6-908f-ba3b280d4335","ts":"2026-05-26T22:41:42.248Z","path":"/home/paul/Documents/linuxonetproj/docs/TROUBLESHOOTING.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"a58ffb59-5edf-42e2-a961-b30b8b0e0756","ts":"2026-05-26T22:42:56.294Z","path":"/home/paul/Documents/linuxonetproj/docs/CONTRIBUTING.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"88ce53f2-d270-4e2d-aaa4-1fe3b8b3fba6","ts":"2026-05-26T22:43:35.326Z","path":"/home/paul/Documents/linuxonetproj/CHANGELOG.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
