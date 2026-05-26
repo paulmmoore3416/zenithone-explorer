@@ -33,16 +33,32 @@ package-lock.json
 .npm
 .eslintcache
 
-# Environment variables
+# Environment variables & Secrets
 .env
+.env.*
+!.env.example
+*.env
 .env.local
 .env.*.local
+secrets/
+*.secret
+*.secrets
+
+# API Keys & Tokens
+*.key
+*.token
+*.pat
+api_keys.txt
+tokens.txt
+credentials.txt
+auth.json
 
 # Database
 *.db
 *.sqlite
 *.sqlite3
 backend/data/database.db
+*.sql
 
 # Logs
 *.log
@@ -88,10 +104,18 @@ temp/
 Thumbs.db
 .DS_Store
 
-# Certificates
+# Certificates & Private Keys
 *.pem
 *.key
 *.crt
+*.cer
+*.p12
+*.pfx
+*.jks
+*.keystore
+ssl/
+certs/
+private/
 
 # Compiled files
 *.pyc
@@ -118,3 +142,22 @@ alembic.ini
 # Local configuration
 config/local.yaml
 config/*.local.*
+local_settings.py
+
+# SSH Keys
+id_rsa
+id_rsa.pub
+*.ppk
+
+# AWS & Cloud Credentials
+.aws/
+.azure/
+.gcloud/
+
+# Docker secrets
+docker-compose.override.yml
+.dockerignore
+
+# Personal notes
+NOTES.md
+TODO.personal.md
