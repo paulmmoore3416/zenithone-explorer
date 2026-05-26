@@ -50,3 +50,7 @@
 {"id":"d1b00f37-ccc7-4bb6-908f-ba3b280d4335","ts":"2026-05-26T22:41:42.248Z","path":"/home/paul/Documents/linuxonetproj/docs/TROUBLESHOOTING.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
 {"id":"a58ffb59-5edf-42e2-a961-b30b8b0e0756","ts":"2026-05-26T22:42:56.294Z","path":"/home/paul/Documents/linuxonetproj/docs/CONTRIBUTING.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
 {"id":"88ce53f2-d270-4e2d-aaa4-1fe3b8b3fba6","ts":"2026-05-26T22:43:35.326Z","path":"/home/paul/Documents/linuxonetproj/CHANGELOG.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"95ae6bec-45f1-473b-9e66-0c9cbf066ce0","ts":"2026-05-26T22:44:41.017Z","path":"/home/paul/Documents/linuxonetproj/docs/UI_GUIDE.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"ba32c4b2-46d2-4a94-bdd9-8f1bcc7cdc8a","ts":"2026-05-26T22:45:24.259Z","path":"/home/paul/Documents/linuxonetproj/docs/guides/GETTING_STARTED.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"b47d3279-2c1c-49f3-9de0-e2ad406c824c","ts":"2026-05-26T22:46:08.979Z","path":"/home/paul/Documents/linuxonetproj/docs/guides/FIRST_WORKLOAD.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"16f30199-4e19-414b-95bf-113072645e0c","ts":"2026-05-26T22:47:08.203Z","path":"/home/paul/Documents/linuxonetproj/docs/guides/FAQ.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
