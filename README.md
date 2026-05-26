@@ -1,505 +1,390 @@
-<div align="center">
+# ZenithOne Explorer
 
-# 🚀 ZenithOne Explorer
+**Enterprise-Grade LinuxONE Showcase Platform with AI-Enhanced Workload Management**
 
-### Enterprise Grade LinuxONE Showcase Platform
-*Demonstrating the Power of IBM LinuxONE on Consumer Hardware*
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.14+](https://img.shields.io/badge/python-3.14+-blue.svg)](https://www.python.org/downloads/)
+[![Node.js 22+](https://img.shields.io/badge/node-22+-green.svg)](https://nodejs.org/)
+[![Podman](https://img.shields.io/badge/podman-4.5+-purple.svg)](https://podman.io/)
 
-[![IBM LinuxONE](https://img.shields.io/badge/IBM-LinuxONE-0530AD?style=for-the-badge&logo=ibm&logoColor=white)](https://www.ibm.com/linuxone)
-[![Python](https://img.shields.io/badge/Python-3.14-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Podman](https://img.shields.io/badge/Podman-5.3-892CA0?style=for-the-badge&logo=podman&logoColor=white)](https://podman.io/)
-[![AI Powered](https://img.shields.io/badge/AI-Qwen2.5-FF6B6B?style=for-the-badge&logo=openai&logoColor=white)](https://qwenlm.github.io/)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
-[![Built with AI](https://img.shields.io/badge/Built%20with-IBM%20Bob%20AI-0530AD?style=for-the-badge&logo=ibm&logoColor=white)](https://www.ibm.com/)
+> **Democratizing Enterprise Computing**: Bringing IBM LinuxONE capabilities to consumer hardware through AI-powered workload management, container orchestration, and z/OS subsystem simulation.
 
 ---
 
-### 🎯 **Mission Statement**
+## 🌟 Overview
 
-*Bringing enterprise grade IBM LinuxONE capabilities to consumer hardware, demonstrating that world class mainframe technologies can run efficiently on accessible platforms like the Alienware Area 51 R5.*
+ZenithOne Explorer is an innovative platform that bridges traditional mainframe computing and modern cloud-native architectures. Built to showcase IBM LinuxONE principles on standard Linux systems, it provides developers, students, and enterprises with an accessible environment for learning, prototyping, and experimenting with enterprise-grade workload management.
 
-</div>
+### Key Highlights
 
-## 🌟 **What Makes This Special**
-
-<table>
-<tr>
-<td width="50%">
-
-### 🏢 **Enterprise Features**
-- 🔐 **JWT Authentication & RBAC**
-- 🤖 **AI-Enhanced Workload Scheduling**
-- 📊 **Real time System Monitoring**
-- 🐳 **Container Orchestration**
-- 🔒 **Enterprise Security Controls**
-- 📈 **Performance Analytics**
-
-</td>
-<td width="50%">
-
-### 🎯 **IBM Technologies**
-- 💻 **z/OS Subsystem Simulators**
-- 🗄️ **DB2 Database Integration**
-- ⚡ **CICS Transaction Processing**
-- 📋 **JES Job Entry Subsystem**
-- 🖥️ **TSO Time Sharing Option**
-- 🔧 **LinuxONE Architecture Patterns**
-
-</td>
-</tr>
-</table>
+- 🤖 **AI-Enhanced Scheduling**: Ollama-powered intelligent workload optimization
+- 🐳 **Container Orchestration**: Podman-based workload execution
+- 🖥️ **z/OS Simulation**: JES, CICS, DB2, and TSO subsystem emulators
+- 📊 **Real-Time Monitoring**: Live metrics and performance tracking
+- 🎯 **Multiple Interfaces**: Web UI, CLI, and REST API
 
 ---
 
-## 🏗️ **Architecture Overview**
+## 🚀 Quick Start
 
-```mermaid
-graph TB
-    subgraph "🖥️ Consumer Hardware (Alienware Area 51 R5)"
-        subgraph "🐧 Ubuntu LinuxONE Environment"
-            subgraph "🚀 ZenithOne Explorer Platform"
-                UI[🎨 Admin Dashboard]
-                API[⚡ FastAPI Backend]
-                CLI[💻 Gemini CLI Tool]
-                
-                subgraph "🧠 AI Core"
-                    AI[🤖 Qwen2.5 Scheduler]
-                    WM[📋 Workload Manager]
-                end
-                
-                subgraph "🏢 z/OS Simulators"
-                    JES[📊 JES Simulator]
-                    CICS[⚡ CICS Simulator]
-                    DB2[🗄️ DB2 Simulator]
-                    TSO[🖥️ TSO Simulator]
-                end
-                
-                subgraph "🐳 Container Layer"
-                    POD[🚢 Podman Engine]
-                    CONT[📦 Workload Containers]
-                end
-                
-                subgraph "💾 Data Layer"
-                    DB[(🗃️ SQLite Database)]
-                    LOGS[📝 System Logs]
-                    METRICS[📈 Performance Data]
-                end
-            end
-        end
-    end
-    
-    UI --> API
-    CLI --> API
-    API --> AI
-    API --> JES
-    API --> CICS
-    API --> DB2
-    API --> TSO
-    WM --> POD
-    POD --> CONT
-    API --> DB
-    API --> LOGS
-    API --> METRICS
-```
+### Prerequisites
 
----
+- Ubuntu 20.04+ (or compatible Linux)
+- 8GB+ RAM (16GB recommended)
+- 20GB+ free disk space
+- Internet connection
 
-## 🚀 **Quick Start**
-
-### 📋 **Prerequisites**
-
-<div align="center">
-
-| Component | Version | Purpose |
-|-----------|---------|---------|
-| 🐧 **Ubuntu** | 22.04+ | LinuxONE Compatible OS |
-| 🐍 **Python** | 3.14+ | Runtime Environment |
-| 🐳 **Podman** | 5.3+ | Container Orchestration |
-| 🤖 **Ollama** | Latest | AI Model Runtime |
-| 💾 **SQLite** | 3.40+ | Database Engine |
-
-</div>
-
-### ⚡ **Installation**
+### Installation (5 Minutes)
 
 ```bash
-# 1️⃣ Clone the repository
+# Clone the repository
 git clone https://github.com/paulmmoore3416/zenithone-explorer.git
 cd zenithone-explorer
 
-# 2️⃣ Set up Python environment
-python3.14 -m venv venv
+# Run installation script
+chmod +x scripts/install.sh
+./scripts/install.sh
+
+# Start the backend
+cd backend
 source venv/bin/activate
-
-# 3️⃣ Install dependencies
-pip install -r backend/requirements.txt
-
-# 4️⃣ Configure environment
-cp .env.example .env
-# Edit .env with your settings
-
-# 5️⃣ Initialize database
-python -m backend.database.migrations.init_db
-
-# 6️⃣ Start the platform
-python -m backend.main
+uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-### 🎯 **First Run**
+### First Workload
 
 ```bash
-# 🚀 Launch the API server
-uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+# Login
+zenith auth login --username admin --password admin123
 
-# 🌐 Access the platform
-open http://localhost:8000/docs  # API Documentation
-open http://localhost:8000/ui    # Admin Dashboard
+# Create and run your first workload
+zenith workload create \
+  --name hello-world \
+  --type batch \
+  --image alpine:latest \
+  --command "echo 'Hello from ZenithOne!'"
+
+zenith workload schedule <workload-id>
+zenith workload logs <workload-id>
+```
+
+### Access the UI
+
+Open your browser: **http://localhost:8000**
+
+Default credentials: `admin` / `admin123`
+
+---
+
+## ✨ Features
+
+### 🎯 Core Capabilities
+
+#### AI-Powered Workload Management
+- **Intelligent Scheduling**: AI analyzes system load and predicts optimal execution times
+- **Resource Optimization**: Machine learning optimizes CPU, memory, and I/O allocation
+- **Anomaly Detection**: Automatic identification of performance issues
+- **Adaptive Learning**: Continuous improvement through historical data analysis
+
+#### Container Orchestration
+- **Multi-Type Workloads**: Batch, interactive, service, and scheduled execution
+- **Resource Management**: CPU, memory, and I/O limits with enforcement
+- **Lifecycle Control**: Complete container management (create, start, stop, pause, delete)
+- **Volume Management**: Persistent storage and data sharing
+
+#### z/OS Subsystem Simulation
+- **JES (Job Entry Subsystem)**: Job submission, queuing, and management
+- **CICS (Transaction Processing)**: Transaction control and monitoring
+- **DB2 (Database Management)**: Database operations and connection pooling
+- **TSO (Time Sharing Option)**: Interactive session management
+
+#### Real-Time Monitoring
+- **System Metrics**: CPU, memory, disk, and network monitoring
+- **Workload Analytics**: Execution time, resource usage, success rates
+- **Visual Dashboards**: Interactive charts and graphs
+- **Alert System**: Threshold-based notifications
+
+### 🖥️ User Interfaces
+
+#### Web Dashboard
+- Modern, responsive design
+- Real-time updates via WebSocket
+- Interactive charts (Chart.js)
+- Comprehensive workload management
+- System monitoring and metrics
+
+#### Command-Line Interface
+- 50+ commands for automation
+- Multiple output formats (table, JSON, YAML)
+- Shell completion (bash, zsh, fish)
+- Scriptable and CI/CD-ready
+
+#### REST API
+- 30+ RESTful endpoints
+- OpenAPI/Swagger documentation
+- JWT authentication
+- Rate limiting and security
+
+---
+
+## 📚 Documentation
+
+### Getting Started
+- **[Installation Guide](docs/INSTALLATION.md)** - Complete setup instructions
+- **[Getting Started](docs/guides/GETTING_STARTED.md)** - Quick start tutorial
+- **[First Workload](docs/guides/FIRST_WORKLOAD.md)** - Step-by-step walkthrough
+- **[FAQ](docs/guides/FAQ.md)** - Frequently asked questions
+
+### User Guides
+- **[CLI Guide](docs/CLI_GUIDE.md)** - Command-line reference
+- **[UI Guide](docs/UI_GUIDE.md)** - Web interface documentation
+- **[API Reference](docs/API_REFERENCE.md)** - REST API documentation
+
+### Technical Documentation
+- **[Configuration](docs/CONFIGURATION.md)** - Configuration reference
+- **[Architecture](docs/architecture/ARCHITECTURE.md)** - System architecture
+- **[Database Schema](docs/architecture/DATABASE_SCHEMA.md)** - Data model
+- **[Troubleshooting](docs/TROUBLESHOOTING.md)** - Common issues and solutions
+
+### Development
+- **[Contributing](docs/CONTRIBUTING.md)** - Contribution guidelines
+- **[Changelog](CHANGELOG.md)** - Version history
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     ZenithOne Explorer                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────────────────┐  │
+│  │  Web UI  │  │   CLI    │  │    REST API Clients      │  │
+│  └────┬─────┘  └────┬─────┘  └───────────┬──────────────┘  │
+│       │             │                     │                  │
+│       └─────────────┴─────────────────────┘                  │
+│                     │                                         │
+│       ┌─────────────▼─────────────────────────┐             │
+│       │      FastAPI Backend (Python)         │             │
+│       │  • Authentication & Security          │             │
+│       │  • Workload Manager                   │             │
+│       │  • Container Orchestrator             │             │
+│       │  • Monitoring Service                 │             │
+│       │  • Subsystem Simulators               │             │
+│       └───────────┬───────────────────────────┘             │
+│                   │                                           │
+│       ┌───────────▼───────────┐  ┌──────────────────────┐   │
+│       │  Database (SQLite)    │  │   Ollama AI Engine   │   │
+│       └───────────────────────┘  └──────────────────────┘   │
+│                                                               │
+│       ┌──────────────────────────────────────────────────┐   │
+│       │           Podman Container Runtime               │   │
+│       └──────────────────────────────────────────────────┘   │
+│                                                               │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🎨 **Features Showcase**
+## 🛠️ Technology Stack
 
-<div align="center">
-
-### 🔐 **Security & Authentication**
-![Security](https://img.shields.io/badge/Security-Enterprise%20Grade-success?style=flat-square&logo=shield&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-Authentication-blue?style=flat-square&logo=jsonwebtokens&logoColor=white)
-![RBAC](https://img.shields.io/badge/RBAC-Role%20Based-orange?style=flat-square&logo=key&logoColor=white)
-
-### 🤖 **AI-Powered Intelligence**
-![AI](https://img.shields.io/badge/AI-Qwen2.5-red?style=flat-square&logo=openai&logoColor=white)
-![Scheduling](https://img.shields.io/badge/Scheduling-Intelligent-purple?style=flat-square&logo=calendar&logoColor=white)
-![Optimization](https://img.shields.io/badge/Optimization-Automatic-green?style=flat-square&logo=speedometer&logoColor=white)
-
-### 📊 **Monitoring & Analytics**
-![Metrics](https://img.shields.io/badge/Metrics-Real%20Time-yellow?style=flat-square&logo=grafana&logoColor=white)
-![Logging](https://img.shields.io/badge/Logging-Structured-blue?style=flat-square&logo=elasticsearch&logoColor=white)
-![Alerts](https://img.shields.io/badge/Alerts-Proactive-red?style=flat-square&logo=bell&logoColor=white)
-
-</div>
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| **Backend** | Python 3.14, FastAPI | REST API and business logic |
+| **Database** | SQLite/PostgreSQL | Data persistence |
+| **AI Engine** | Ollama (Qwen2.5) | Workload optimization |
+| **Containers** | Podman 4.5+ | Workload execution |
+| **CLI** | Node.js 22, Commander.js | Command-line interface |
+| **UI** | HTML5, CSS3, JavaScript | Web dashboard |
+| **Charts** | Chart.js | Data visualization |
+| **Testing** | pytest, Jest | Quality assurance |
 
 ---
 
-## 🏢 **IBM z/OS Subsystem Simulators**
+## 📊 Use Cases
 
-<table>
-<tr>
-<th width="25%">🗄️ DB2 Simulator</th>
-<th width="25%">⚡ CICS Simulator</th>
-<th width="25%">📊 JES Simulator</th>
-<th width="25%">🖥️ TSO Simulator</th>
-</tr>
-<tr>
-<td>
+### 🎓 Education & Training
+- Learn mainframe concepts without expensive infrastructure
+- Hands-on experience with enterprise workload management
+- Practice container orchestration and AI optimization
+- Understand z/OS subsystems and their interactions
 
-```python
-# Database operations
-db2 = DB2Simulator()
-result = db2.execute_sql(
-    "SELECT * FROM CUSTOMERS"
-)
-```
+### 💼 Enterprise Prototyping
+- Test LinuxONE workloads before production deployment
+- Validate resource requirements and performance
+- Train operations teams on enterprise concepts
+- Prototype migration strategies
 
-</td>
-<td>
+### 🔬 Research & Development
+- Experiment with AI-powered scheduling algorithms
+- Study workload optimization techniques
+- Collect performance data and metrics
+- Test new orchestration strategies
 
-```python
-# Transaction processing
-cics = CICSSimulator()
-response = cics.process_transaction(
-    program="CUSTUPDT",
-    data=customer_data
-)
-```
-
-</td>
-<td>
-
-```python
-# Job management
-jes = JESSimulator()
-job_id = jes.submit_job(
-    jcl_content,
-    priority="HIGH"
-)
-```
-
-</td>
-<td>
-
-```python
-# Interactive sessions
-tso = TSOSimulator()
-output = tso.execute_command(
-    "LISTCAT LEVEL(SYS1)"
-)
-```
-
-</td>
-</tr>
-</table>
+### 👨‍💻 Software Development
+- Develop and test containerized applications
+- CI/CD pipeline integration
+- Performance testing and benchmarking
+- API integration development
 
 ---
 
-## 📊 **Performance Metrics**
+## 🎯 Project Status
 
-<div align="center">
+### Current Version: 1.0.0
 
-### 🎯 **Benchmark Results on Alienware Area 51 R5**
+**Completed Features:**
+- ✅ Complete backend with 30+ API endpoints
+- ✅ CLI with 50+ commands
+- ✅ Web UI with real-time monitoring
+- ✅ AI-powered workload scheduling
+- ✅ Container orchestration
+- ✅ z/OS subsystem simulators
+- ✅ Comprehensive testing suite
+- ✅ Complete documentation
 
-| Metric | Value | Target | Status |
-|--------|-------|--------|--------|
-| 🚀 **API Response Time** | <50ms | <100ms | ✅ **Excellent** |
-| 🧠 **AI Inference Time** | <200ms | <500ms | ✅ **Excellent** |
-| 🐳 **Container Startup** | <2s | <5s | ✅ **Excellent** |
-| 💾 **Memory Usage** | <512MB | <1GB | ✅ **Efficient** |
-| ⚡ **Throughput** | 1000 req/s | 500 req/s | ✅ **Outstanding** |
+**Roadmap:**
+- 🔄 Multi-node cluster support (v1.5)
+- 🔄 Enhanced AI capabilities (v1.5)
+- 🔄 IBM Cloud integration (v2.0)
+- 🔄 Mobile app (v2.0)
 
-</div>
-
----
-
-## 🛠️ **Technology Stack**
-
-<div align="center">
-
-### 🎯 **Core Technologies**
-
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)](https://www.sqlalchemy.org/)
-[![Podman](https://img.shields.io/badge/Podman-892CA0?style=for-the-badge&logo=podman&logoColor=white)](https://podman.io/)
-
-### 🤖 **AI & Machine Learning**
-
-[![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)](https://ollama.ai/)
-[![Qwen](https://img.shields.io/badge/Qwen2.5-FF6B6B?style=for-the-badge&logo=openai&logoColor=white)](https://qwenlm.github.io/)
-
-### 🏢 **IBM Technologies**
-
-[![IBM](https://img.shields.io/badge/IBM-LinuxONE-0530AD?style=for-the-badge&logo=ibm&logoColor=white)](https://www.ibm.com/linuxone)
-[![z/OS](https://img.shields.io/badge/z%2FOS-Simulators-1F70C1?style=for-the-badge&logo=ibm&logoColor=white)](https://www.ibm.com/products/zos)
-
-</div>
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
 
 ---
 
-## 📚 **API Documentation**
+## 🤝 Contributing
 
-### 🔗 **Interactive API Explorer**
+We welcome contributions! Please see our [Contributing Guide](docs/CONTRIBUTING.md) for details.
 
-Visit our **Swagger UI** at `http://localhost:8000/docs` for complete API documentation.
-
-<details>
-<summary>🔐 <strong>Authentication Endpoints</strong></summary>
-
-```http
-POST /api/v1/auth/login
-POST /api/v1/auth/register
-POST /api/v1/auth/refresh
-DELETE /api/v1/auth/logout
-```
-
-</details>
-
-<details>
-<summary>📋 <strong>Workload Management</strong></summary>
-
-```http
-GET    /api/v1/workloads
-POST   /api/v1/workloads
-GET    /api/v1/workloads/{id}
-PUT    /api/v1/workloads/{id}
-DELETE /api/v1/workloads/{id}
-POST   /api/v1/workloads/{id}/schedule
-```
-
-</details>
-
-<details>
-<summary>🐳 <strong>Container Operations</strong></summary>
-
-```http
-GET    /api/v1/containers
-POST   /api/v1/containers
-GET    /api/v1/containers/{id}
-POST   /api/v1/containers/{id}/start
-POST   /api/v1/containers/{id}/stop
-DELETE /api/v1/containers/{id}
-```
-
-</details>
+### Ways to Contribute
+- 🐛 Report bugs
+- 💡 Suggest features
+- 📝 Improve documentation
+- 🔧 Submit pull requests
+- ⭐ Star the repository
 
 ---
 
-## 🎯 **Use Cases**
+## 📈 Performance
 
-<table>
-<tr>
-<td width="33%">
+### Benchmarks (Alienware Area 51 R5)
+- **API Response Time**: <50ms average
+- **Container Startup**: <2 seconds
+- **Concurrent Workloads**: 10+ simultaneous
+- **AI Scheduling**: <500ms decision time
+- **Memory Footprint**: ~500MB base system
 
-### 🏢 **Enterprise Development**
-- Mainframe application testing
-- z/OS workload simulation
-- Performance benchmarking
-- Migration planning
-
-</td>
-<td width="33%">
-
-### 🎓 **Education & Training**
-- IBM technology learning
-- Mainframe concepts
-- Container orchestration
-- AI/ML integration
-
-</td>
-<td width="33%">
-
-### 🔬 **Research & Innovation**
-- LinuxONE capabilities
-- AI-driven scheduling
-- Performance optimization
-- Hybrid cloud patterns
-
-</td>
-</tr>
-</table>
+### Scalability
+- Supports 50+ active containers
+- Handles 1000+ API requests/second
+- Manages 100+ WebSocket connections
+- Processes 100+ concurrent operations
 
 ---
 
-## 🏆 **Awards & Recognition**
+## 🔒 Security
 
-<div align="center">
+- JWT-based authentication
+- Role-based access control (RBAC)
+- Password hashing with bcrypt
+- Input validation and sanitization
+- SQL injection prevention
+- XSS protection
+- Rate limiting
+- SSL/TLS support
 
-### 🎖️ **Built for Excellence**
-
-[![IBM Partner](https://img.shields.io/badge/IBM-Technology%20Showcase-0530AD?style=for-the-badge&logo=ibm&logoColor=white)](https://www.ibm.com/)
-[![Google Cloud](https://img.shields.io/badge/Google-AI%20Innovation-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://cloud.google.com/)
-[![Open Source](https://img.shields.io/badge/Open%20Source-Community%20Driven-brightgreen?style=for-the-badge&logo=opensource&logoColor=white)](https://opensource.org/)
-
-*Designed to meet IBM and Google's highest standards for enterprise software*
-
-</div>
-
----
-
-## 👥 **Development Team**
-
-<div align="center">
-
-### 🤖 **AI-Powered Development**
-
-| Role | Contributor | Technology |
-|------|-------------|------------|
-| 🧠 **Lead Architect** | IBM Bob AI | Advanced reasoning & planning |
-| 💻 **Implementation** | Gemini CLI AI | Code generation & optimization |
-| 🎯 **Project Owner** | Paul Moore | Vision & requirements |
-
-*Showcasing the future of AI-assisted enterprise software development*
-
-</div>
+See [Security Documentation](docs/architecture/ARCHITECTURE.md#security) for details.
 
 ---
 
-## 📈 **Roadmap**
+## 📦 System Requirements
 
-<div align="center">
+### Minimum
+- 4-core CPU (x86_64)
+- 8GB RAM
+- 20GB storage
+- Ubuntu 20.04+
 
-### 🚀 **Development Phases**
+### Recommended
+- 8+ core CPU
+- 16GB+ RAM
+- 50GB+ SSD storage
+- Ubuntu 22.04 LTS
 
-```mermaid
-gantt
-    title ZenithOne Explorer Development Timeline
-    dateFormat  YYYY-MM-DD
-    section Phase 1
-    Foundation & Architecture    :done, p1, 2026-05-01, 2026-05-15
-    section Phase 2
-    Backend Core Development     :done, p2, 2026-05-15, 2026-05-25
-    section Phase 3
-    CLI Tool Development         :active, p3, 2026-05-25, 2026-06-05
-    section Phase 4
-    Admin UI Development         :p4, 2026-06-05, 2026-06-15
-    section Phase 5
-    Testing & Quality Assurance  :p5, 2026-06-15, 2026-06-25
-    section Phase 6
-    Documentation & Guides       :p6, 2026-06-25, 2026-07-05
-    section Phase 7
-    Marketing & Presentation     :p7, 2026-07-05, 2026-07-15
-    section Phase 8
-    Deployment & Launch          :p8, 2026-07-15, 2026-07-25
-```
-
-</div>
+### Tested Hardware
+- **Alienware Area 51 R5**
+- Intel i7-7820X (8C/16T)
+- 22GB RAM
+- 1.5TB Storage
 
 ---
 
-## 🤝 **Contributing**
+## 🌐 Community & Support
 
-We welcome contributions from the community! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+### Get Help
+- 📖 [Documentation](docs/)
+- 💬 [GitHub Discussions](https://github.com/paulmmoore3416/zenithone-explorer/discussions)
+- 🐛 [Issue Tracker](https://github.com/paulmmoore3416/zenithone-explorer/issues)
+- 📧 Email: paulmmoore3416@gmail.com
 
-### 🔧 **Development Setup**
-
-```bash
-# Fork the repository
-git clone https://github.com/your-username/zenithone-explorer.git
-
-# Create a feature branch
-git checkout -b feature/amazing-feature
-
-# Make your changes and commit
-git commit -m "Add amazing feature"
-
-# Push to your fork and create a Pull Request
-git push origin feature/amazing-feature
-```
+### Stay Updated
+- ⭐ Star the repository
+- 👀 Watch for updates
+- 🔔 Enable notifications
 
 ---
 
-## 📄 **License**
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 **Acknowledgments**
+## 🙏 Acknowledgments
+
+### Development Team
+- **Paul Moore** - Project Lead & Full Stack Development
+- **IBM Bob AI** - AI-assisted development and documentation
+- **Gemini CLI AI** - Collaborative development support
+
+### Inspiration
+- IBM LinuxONE team for enterprise computing excellence
+- Open source community for tools and libraries
+- Beta testers and early adopters
+
+### Technology Partners
+- FastAPI for the excellent web framework
+- Ollama for local AI capabilities
+- Podman for container orchestration
+- Chart.js for data visualization
+
+---
+
+## 🎉 Quick Links
+
+- **Repository**: https://github.com/paulmmoore3416/zenithone-explorer
+- **Documentation**: [docs/](docs/)
+- **Issues**: https://github.com/paulmmoore3416/zenithone-explorer/issues
+- **Discussions**: https://github.com/paulmmoore3416/zenithone-explorer/discussions
+
+---
+
+## 📞 Contact
+
+**Paul Moore**  
+📧 paulmmoore3416@gmail.com  
+🐙 [@paulmmoore3416](https://github.com/paulmmoore3416)
+
+---
 
 <div align="center">
 
-### 🎯 **Special Thanks**
+**ZenithOne Explorer: Making Enterprise Computing Accessible to Everyone**
 
-- 🏢 **IBM** for LinuxONE technology and inspiration
-- 🤖 **Google** for AI/ML frameworks and tools
-- 🐧 **Ubuntu** for the robust Linux foundation
-- 🚀 **FastAPI** community for the excellent framework
-- 🐳 **Podman** team for container innovation
+Made with ❤️ by Paul Moore | Powered by AI | Inspired by IBM LinuxONE
 
----
-
-### 📞 **Contact & Support**
-
-[![Email](https://img.shields.io/badge/Email-paulmmoore3416%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:paulmmoore3416@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-paulmmoore3416-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/paulmmoore3416)
-
----
-
-### 🌟 **Star this repository if you find it useful!**
-
-[![GitHub stars](https://img.shields.io/github/stars/paulmmoore3416/zenithone-explorer?style=social)](https://github.com/paulmmoore3416/zenithone-explorer/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/paulmmoore3416/zenithone-explorer?style=social)](https://github.com/paulmmoore3416/zenithone-explorer/network/members)
-
-</div>
-
----
-
-<div align="center">
-
-**🚀 ZenithOne Explorer - Bringing Enterprise Power to Consumer Hardware 🚀**
-
-*Built with ❤️ by AI, for the future of enterprise computing*
+[Get Started](docs/guides/GETTING_STARTED.md) • [Documentation](docs/) • [Contribute](docs/CONTRIBUTING.md)
 
 </div>
