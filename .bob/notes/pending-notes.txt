@@ -43,3 +43,7 @@
 {"id":"b48dd268-0bef-405f-ac31-8ce8c5ac6b34","ts":"2026-05-26T22:21:21.990Z","path":"/home/paul/Documents/linuxonetproj/tests/security/test_security_audit.py","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
 {"id":"f28a168c-7634-453a-953b-6fb83436fd6f","ts":"2026-05-26T22:21:42.986Z","path":"/home/paul/Documents/linuxonetproj/tests/README.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
 {"id":"9359c6f5-aa98-4288-841b-6f3cd218f973","ts":"2026-05-26T22:21:58.428Z","path":"/home/paul/Documents/linuxonetproj/tests/requirements.txt","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"8ff90687-5c0b-45ff-9709-8d7cfd5ae436","ts":"2026-05-26T22:35:12.713Z","path":"/home/paul/Documents/linuxonetproj/docs/INSTALLATION.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"d451861a-0f98-4e1f-838f-0e6e6fc68b70","ts":"2026-05-26T22:36:01.990Z","path":"/home/paul/Documents/linuxonetproj/docs/CONFIGURATION.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"dca8547b-f39f-47b7-8f5a-618a85ad63a7","ts":"2026-05-26T22:37:03.218Z","path":"/home/paul/Documents/linuxonetproj/docs/API_REFERENCE.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
+{"id":"f47b941b-b09b-4502-8751-34844d4e2d48","ts":"2026-05-26T22:37:53.680Z","path":"/home/paul/Documents/linuxonetproj/docs/CLI_GUIDE.md","version":"1.0.0","taskID":"a067a585-f3ed-4a4e-b50f-76688616ec54"}
