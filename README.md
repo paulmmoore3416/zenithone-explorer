@@ -2,7 +2,7 @@
 
 # 🚀 ZenithOne Explorer
 
-### Enterprise-Grade LinuxONE Showcase Platform
+### Enterprise Grade LinuxONE Showcase Platform
 *Demonstrating the Power of IBM LinuxONE on Consumer Hardware*
 
 [![IBM LinuxONE](https://img.shields.io/badge/IBM-LinuxONE-0530AD?style=for-the-badge&logo=ibm&logoColor=white)](https://www.ibm.com/linuxone)
@@ -19,7 +19,7 @@
 
 ### 🎯 **Mission Statement**
 
-*Bringing enterprise-grade IBM LinuxONE capabilities to consumer hardware, demonstrating that world-class mainframe technologies can run efficiently on accessible platforms like the Alienware Area 51 R5.*
+*Bringing enterprise grade IBM LinuxONE capabilities to consumer hardware, demonstrating that world class mainframe technologies can run efficiently on accessible platforms like the Alienware Area 51 R5.*
 
 </div>
 
@@ -32,7 +32,7 @@
 ### 🏢 **Enterprise Features**
 - 🔐 **JWT Authentication & RBAC**
 - 🤖 **AI-Enhanced Workload Scheduling**
-- 📊 **Real-time System Monitoring**
+- 📊 **Real time System Monitoring**
 - 🐳 **Container Orchestration**
 - 🔒 **Enterprise Security Controls**
 - 📈 **Performance Analytics**
