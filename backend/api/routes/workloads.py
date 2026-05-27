@@ -7,12 +7,12 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from datetime import datetime
 
-from backend.database.connection import get_db
-from backend.database.models import User, Workload, WorkloadLog
-from backend.api.routes.auth import get_current_user
-from backend.core.workload_manager import workload_manager
-from backend.core.security import check_permission
-from backend.utils.logger import get_logger
+from database.connection import get_db
+from database.models import User, Workload, WorkloadLog
+from api.routes.auth import get_current_user
+from core.workload_manager import workload_manager
+from core.security import check_permission
+from utils.logger import get_logger
 
 logger = get_logger("workloads_routes")
 router = APIRouter()

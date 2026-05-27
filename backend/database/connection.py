@@ -7,9 +7,9 @@ from sqlalchemy.pool import StaticPool
 from typing import Generator
 from pathlib import Path
 
-from backend.config import settings
-from backend.database.models import Base
-from backend.utils.logger import get_logger
+from config import settings
+from database.models import Base
+from utils.logger import get_logger
 
 logger = get_logger("database")
 
@@ -65,8 +65,8 @@ def get_db() -> Generator[Session, None, None]:
 
 def seed_database():
     """Seed database with initial data."""
-    from backend.core.security import get_password_hash
-    from backend.database.models import User, Subsystem, Configuration
+    from core.security import get_password_hash
+    from database.models import User, Subsystem, Configuration
     
     db = SessionLocal()
     

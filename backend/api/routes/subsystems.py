@@ -4,15 +4,15 @@ ZenithOne Explorer - Subsystems Routes
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from backend.database.connection import get_db
-from backend.database.models import User
-from backend.api.routes.auth import get_current_user
-from backend.subsystems.jes import jes_simulator
-from backend.subsystems.cics import cics_simulator
-from backend.subsystems.db2 import db2_simulator
-from backend.subsystems.tso import tso_simulator
-from backend.core.security import check_permission
-from backend.utils.logger import get_logger
+from database.connection import get_db
+from database.models import User
+from api.routes.auth import get_current_user
+from subsystems.jes import jes_simulator
+from subsystems.cics import cics_simulator
+from subsystems.db2 import db2_simulator
+from subsystems.tso import tso_simulator
+from core.security import check_permission
+from utils.logger import get_logger
 
 logger = get_logger("subsystems_routes")
 router = APIRouter()

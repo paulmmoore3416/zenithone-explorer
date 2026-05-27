@@ -8,9 +8,9 @@ from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional
 from sqlalchemy.orm import Session
 
-from backend.database.models import SystemMetric
-from backend.config import settings
-from backend.utils.logger import get_logger
+from database.models import SystemMetric
+from config import settings
+from utils.logger import get_logger
 
 logger = get_logger("monitoring_service")
 
@@ -156,7 +156,7 @@ class MonitoringService:
                 return
             
             # Count active workloads and containers
-            from backend.database.models import Workload, Container
+            from database.models import Workload, Container
             
             active_workloads = db.query(Workload).filter(
                 Workload.status.in_(["pending", "running"])

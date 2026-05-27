@@ -9,9 +9,9 @@ from typing import Optional, List, Dict, Any
 from queue import PriorityQueue
 from sqlalchemy.orm import Session
 
-from backend.database.models import Workload, WorkloadLog, WorkloadMetric
-from backend.config import settings
-from backend.utils.logger import get_logger
+from database.models import Workload, WorkloadLog, WorkloadMetric
+from config import settings
+from utils.logger import get_logger
 
 logger = get_logger("workload_manager")
 

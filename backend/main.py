@@ -10,13 +10,13 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 import time
 
-from backend.config import settings
-from backend.database.connection import init_db, seed_database
-from backend.core.monitoring_service import monitoring_service
-from backend.utils.logger import get_logger
+from config import settings
+from database.connection import init_db, seed_database
+from core.monitoring_service import monitoring_service
+from utils.logger import get_logger
 
 # Import routers
-from backend.api.routes import auth, workloads, containers, metrics, subsystems, admin
+from api.routes import auth, workloads, containers, metrics, subsystems, admin
 
 logger = get_logger("main")
 
@@ -36,7 +36,7 @@ async def lifespan(app: FastAPI):
         seed_database()
         
         # Start monitoring service
-        from backend.database.connection import SessionLocal
+        from database.connection import SessionLocal
         db = SessionLocal()
         await monitoring_service.start(db)
         db.close()

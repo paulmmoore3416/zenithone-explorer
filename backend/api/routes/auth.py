@@ -8,17 +8,17 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel, EmailStr
 from sqlalchemy.orm import Session
 
-from backend.database.connection import get_db
-from backend.database.models import User, AuditLog
-from backend.core.security import (
+from database.connection import get_db
+from database.models import User, AuditLog
+from core.security import (
     create_access_token,
     decode_access_token,
     verify_password,
     get_password_hash,
     validate_password_strength
 )
-from backend.config import settings
-from backend.utils.logger import get_logger
+from config import settings
+from utils.logger import get_logger
 
 logger = get_logger("auth")
 router = APIRouter()

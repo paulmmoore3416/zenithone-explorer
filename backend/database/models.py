@@ -31,7 +31,7 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     last_login = Column(DateTime, nullable=True)
     active = Column(Boolean, default=True)
-    metadata = Column(Text, nullable=True)  # JSON
+    user_metadata = Column(Text, nullable=True)  # JSON
     
     # Relationships
     workloads = relationship("Workload", back_populates="owner", cascade="all, delete-orphan")

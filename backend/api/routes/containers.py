@@ -6,12 +6,12 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from backend.database.connection import get_db
-from backend.database.models import User, Container
-from backend.api.routes.auth import get_current_user
-from backend.core.container_orchestrator import container_orchestrator
-from backend.core.security import check_permission
-from backend.utils.logger import get_logger
+from database.connection import get_db
+from database.models import User, Container
+from api.routes.auth import get_current_user
+from core.container_orchestrator import container_orchestrator
+from core.security import check_permission
+from utils.logger import get_logger
 
 logger = get_logger("containers_routes")
 router = APIRouter()

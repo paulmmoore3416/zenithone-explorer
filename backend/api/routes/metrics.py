@@ -6,12 +6,12 @@ from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from backend.database.connection import get_db
-from backend.database.models import User
-from backend.api.routes.auth import get_current_user
-from backend.core.monitoring_service import monitoring_service
-from backend.core.security import check_permission
-from backend.utils.logger import get_logger
+from database.connection import get_db
+from database.models import User
+from api.routes.auth import get_current_user
+from core.monitoring_service import monitoring_service
+from core.security import check_permission
+from utils.logger import get_logger
 
 logger = get_logger("metrics_routes")
 router = APIRouter()

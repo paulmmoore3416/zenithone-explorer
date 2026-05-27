@@ -14,9 +14,9 @@ except ImportError:
     PODMAN_AVAILABLE = False
     PodmanClient = None
 
-from backend.database.models import Container
-from backend.config import settings
-from backend.utils.logger import get_logger
+from database.models import Container
+from config import settings
+from utils.logger import get_logger
 
 logger = get_logger("container_orchestrator")
 

@@ -7,11 +7,11 @@ from pydantic import BaseModel, EmailStr
 from sqlalchemy.orm import Session
 from datetime import datetime
 
-from backend.database.connection import get_db
-from backend.database.models import User, AuditLog, Configuration
-from backend.api.routes.auth import get_current_user
-from backend.core.security import get_password_hash, validate_password_strength, check_permission
-from backend.utils.logger import get_logger
+from database.connection import get_db
+from database.models import User, AuditLog, Configuration
+from api.routes.auth import get_current_user
+from core.security import get_password_hash, validate_password_strength, check_permission
+from utils.logger import get_logger
 
 logger = get_logger("admin_routes")
 router = APIRouter()
